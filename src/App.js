@@ -4,8 +4,8 @@ import "./App.css";
 class Building extends Component {
   renderSquare(x, y) {
     return (
-      <button>
-        ({x} , {y})
+      <button id="square" codeX={x} codeY={y}>
+        X
       </button>
     );
   }
@@ -70,14 +70,20 @@ class App extends Component {
     const inputBox = (
       <div>
         <form>
-          <input type="number" id="sizeHere"></input>
-          <button type="button" onClick={() => this.enterCount()}></button>
+          <input type="number" class="button" id="sizeHere"></input>
+          <button
+            type="button"
+            class="button"
+            onClick={() => this.enterCount()}
+          >
+            ENTER
+          </button>
         </form>
       </div>
     );
     return (
       <div>
-        <div>{inputBox}</div>
+        <div className="HeaderSpot">{inputBox}</div>
         <Building sizeValue={count} />
       </div>
     );
