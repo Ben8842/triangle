@@ -1,48 +1,46 @@
 .HeaderSpot {
   margin: 50px;
-  padding: 25px;
+
   border-color: black;
   border: solid;
 }
 
 .button {
-  border-color: green;
-  border: solid;
-  border-width: 25px;
-  font-size: 20px;
-  border: 4px solid #008cba;
-  border-radius: 10px;
-  display: inline-block;
+  border: none;
+
+  border: none;
   font-weight: bold;
 }
 
 #square {
   background-color: white;
   color: black;
-  background: white;
-  border: solid solid solid solid;
-  font-size: 24px;
+
+  border: none;
+
   font-weight: bold;
-  line-height: 34px;
-  height: 45px;
-  padding: 0;
+  line-height: 5px;
+  height: 15px;
+
   text-align: center;
-  width: 45px;
+  width: 15px;
+}
+
+#squareGreen {
+  background-color: green;
+  color: black;
+
+  border: none;
+
+  line-height: 5px;
+  height: 15px;
+
+  text-align: center;
+  width: 15px;
 }
 
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {

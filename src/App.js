@@ -3,11 +3,11 @@ import "./App.css";
 
 class Building extends Component {
   renderSquare(x, y) {
-    return (
-      <button id="square" codeX={x} codeY={y}>
-        X
-      </button>
-    );
+    return <button id="square" codeX={x} codeY={y}></button>;
+  }
+
+  renderGreen(x, y) {
+    return <button id="squareGreen" codeX={x} codeY={y}></button>;
   }
 
   render() {
@@ -19,7 +19,11 @@ class Building extends Component {
     var y;
     for (y = 0; y < viewSize; y++) {
       for (x = 0; x < viewSize; x++) {
-        elementS.push(<span>{this.renderSquare(x, y)}</span>);
+        if (x % y == 0) {
+          elementS.push(<span>{this.renderGreen(x, y)}</span>);
+        } else {
+          elementS.push(<span>{this.renderSquare(x, y)}</span>);
+        }
       }
       elementZ.push(
         <div className="newLine">
@@ -52,7 +56,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 1,
+      count: 100,
     };
   }
   enterCount() {
