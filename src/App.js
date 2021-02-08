@@ -82,6 +82,7 @@ class App extends Component {
           >
             ENTER
           </button>
+          10 PRINT CHR$ (205.5 + RND (1)); : GOTO 10
         </form>
       </div>
     );
