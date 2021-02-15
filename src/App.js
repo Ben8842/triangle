@@ -10,6 +10,10 @@ class Building extends Component {
     return <button id="squareGreen" codeX={x} codeY={y}></button>;
   }
 
+  renderGreenO(x, y) {
+    return <button id="squareGreenO" codeX={x} codeY={y}></button>;
+  }
+
   render() {
     const elementS = [];
     const elementZ = [];
@@ -19,11 +23,9 @@ class Building extends Component {
     var y;
     for (y = 0; y < viewSize; y++) {
       for (x = 0; x < viewSize; x++) {
-        if (x % y == 0) {
-          elementS.push(<span>{this.renderGreen(x, y)}</span>);
-        } else {
-          elementS.push(<span>{this.renderSquare(x, y)}</span>);
-        }
+        if (y % 2 == 0 && x == 0) {
+          elementS.push(<span>{this.renderGreenO(x, y)}</span>);
+        } else elementS.push(<span>{this.renderGreen(x, y)}</span>);
       }
       elementZ.push(
         <div className="newLine">
@@ -56,7 +58,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 100,
+      count: 50,
     };
   }
   enterCount() {
