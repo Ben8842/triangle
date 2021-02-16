@@ -6,8 +6,28 @@ class Building extends Component {
     super(props);
     this.state = {
       triangle: [],
+      specialCount: 2,
     };
   }
+
+  builderOrigin() {
+    console.log("hello origin");
+    var interval = setInterval(this.countIncrement.bind(this), 250);
+    this.setState({ interval: interval });
+  }
+
+  countIncrement() {
+    var { triangle, specialCount } = this.state;
+    this.setState({
+      specialCount: this.state.specialCount + 1,
+    });
+    console.log(specialCount);
+    this.forceUpdate();
+    if (this.state.specialCount > 50) {
+      clearInterval(this.state.interval);
+    }
+  }
+
   triangleBuilder() {
     var { triangle } = this.state;
     const viewSize = this.props.sizeValue;
@@ -15,7 +35,7 @@ class Building extends Component {
     var i = null;
     var u = null;
 
-    triangleRow.push(1, 2, 1);
+    triangleRow.push(1);
     triangle.push(triangleRow);
 
     //triangleRow.push(1);
@@ -63,32 +83,15 @@ class Building extends Component {
 
     if (x > dif - 1) {
       if (triangle[y][x - dif] % 2 == 0) {
-        return (
-          <button id="squareGreen" codeX={x} codeY={y}>
-            {triangle[y][x - dif]}.
-          </button>
-        );
+        return <button id="squareGreen" codeX={x} codeY={y}></button>;
       } else if (triangle[y][x - dif] % 2 == 1)
-        return (
-          <button id="squareBlue" codeX={x} codeY={y}>
-            {triangle[y][x - dif]}.
-          </button>
-        );
-    } else
-      return (
-        <button id="squareGreen" codeX={x} codeY={y}>
-          .
-        </button>
-      );
+        return <button id="squareBlue" codeX={x} codeY={y}></button>;
+    } else return <button id="squareEmpty" codeX={x} codeY={y}></button>;
   }
 
   renderGreenO(x, y, triangleItem) {
     var { triangle } = this.state;
-    return (
-      <button id="squareGreenO" codeX={x} codeY={y}>
-        .
-      </button>
-    );
+    return <button id="squareGreenO" codeX={x} codeY={y}></button>;
   }
 
   renderGreenT(x, y, triangle) {
@@ -96,7 +99,7 @@ class Building extends Component {
   }
 
   render() {
-    var { triangle } = this.state;
+    var { triangle, specialCount } = this.state;
     const elementS = [];
     const elementZ = [];
     const viewSize = this.props.sizeValue;
@@ -106,7 +109,7 @@ class Building extends Component {
     var x;
     var y;
 
-    for (y = 0; y < viewSize; y++) {
+    for (y = 0; y < specialCount; y++) {
       for (x = 0; x < viewSize; x++) {
         if (y % 2 == 0 && x == 0) {
           elementS.push(<span>{this.renderGreenO(x, y, triangle[y][x])}</span>);
@@ -129,6 +132,9 @@ class Building extends Component {
     return (
       <div className="entireThing">
         <div>
+          <button id="greatButton" onClick={() => this.builderOrigin()}>
+            BUILD PASCAL/PINSKI TRIANGLE
+          </button>
           <span>
             {elementZ.map((value, index) => {
               return <span key={index}>{value}</span>;
@@ -144,7 +150,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 40,
+      count: 24,
     };
   }
   enterCount() {

@@ -29,11 +29,12 @@
   background-color: rgb(0, 255, 21);
   color: rgb(15, 15, 15);
   padding: 0;
-  font-size: 30px;
-  margin: -4px;
-  height: 100px;
+  font-size: 2px;
+  margin: -1px;
+  height: 12px;
   text-align: center;
-  width: 100px;
+  width: 12px;
+  line-height: 2pt;
 }
 
 #squareBlue {
@@ -41,23 +42,38 @@
   background-color: rgb(25, 0, 255);
   color: rgb(15, 15, 15);
   padding: 0;
-  font-size: 30px;
-  margin: -4px;
-  height: 100px;
+  font-size: 2px;
+  margin: -1px;
+  height: 12px;
   text-align: center;
-  width: 100px;
+  width: 12px;
+  line-height: 2pt;
+}
+
+#squareEmpty {
+  border: none;
+  background-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  padding: 0;
+  font-size: 2px;
+  margin: -1px;
+  height: 12px;
+  text-align: center;
+  width: 12px;
+  line-height: 2pt;
 }
 
 #squareGreenO {
-  border: solid;
-  background-color: rgb(0, 255, 21);
-  color: rgb(15, 15, 15);
+  border: none;
+  background-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
   padding: 0;
-  font-size: 30px;
-  margin: -4px;
-  height: 100px;
+  font-size: 2px;
+  margin: -1px;
+  height: 12px;
   text-align: center;
-  width: 50px;
+  width: 6px;
+  line-height: 2pt;
 }
 
 #squareGreenT {
@@ -65,8 +81,8 @@
   background-color: rgb(229, 255, 0);
   color: rgb(15, 15, 15);
   padding: 0;
-  font-size: 30px;
-  margin: -4px;
+  font-size: 2px;
+  margin: -1px;
   height: 100px;
   text-align: center;
   width: 100px;
