@@ -23,7 +23,7 @@ class Building extends Component {
     });
     console.log(specialCount);
     this.forceUpdate();
-    if (this.state.specialCount > 50) {
+    if (this.state.specialCount > this.state.viewSize + 1) {
       clearInterval(this.state.interval);
     }
   }
@@ -78,8 +78,8 @@ class Building extends Component {
     var { triangle } = this.state;
     var width = triangle[y].length;
     if (y % 2 == 0) {
-      var dif = Math.floor((this.props.sizeValue - width) / 2);
-    } else var dif = Math.floor((this.props.sizeValue - width) / 2) - 1;
+      var dif = Math.floor((this.props.sizeValue + 8 - width) / 2);
+    } else var dif = Math.floor((this.props.sizeValue + 8 - width) / 2) - 1;
 
     if (x > dif - 1) {
       if (triangle[y][x - dif] % 2 == 0) {
@@ -150,7 +150,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 24,
+      count: 70,
     };
   }
   enterCount() {

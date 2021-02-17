@@ -1,13 +1,10 @@
 .HeaderSpot {
   margin: 50px;
-
   border-color: black;
   border: solid;
 }
 
 .button {
-  border: none;
-
   border: none;
   font-weight: bold;
 }
@@ -17,7 +14,7 @@
   background-color: rgb(249, 250, 249);
   color: rgb(10, 10, 10);
   padding: 0;
-  font-size: 5px;
+  font-size: 8px;
   margin: -4px;
   height: 100px;
   text-align: center;
@@ -25,28 +22,28 @@
 }
 
 #squareGreen {
-  border: solid;
+  border: none;
   background-color: rgb(0, 255, 21);
   color: rgb(15, 15, 15);
   padding: 0;
   font-size: 2px;
-  margin: -1px;
-  height: 12px;
+  margin: -0px;
+  height: 8px;
   text-align: center;
-  width: 12px;
+  width: 8px;
   line-height: 2pt;
 }
 
 #squareBlue {
-  border: solid;
+  border: none;
   background-color: rgb(25, 0, 255);
   color: rgb(15, 15, 15);
   padding: 0;
   font-size: 2px;
-  margin: -1px;
-  height: 12px;
+  margin: -0px;
+  height: 8px;
   text-align: center;
-  width: 12px;
+  width: 8px;
   line-height: 2pt;
 }
 
@@ -56,11 +53,11 @@
   color: rgb(255, 255, 255);
   padding: 0;
   font-size: 2px;
-  margin: -1px;
-  height: 12px;
+  margin: -0px;
+  height: 8px;
   text-align: center;
-  width: 12px;
-  line-height: 2pt;
+  width: 8px;
+  line-height: 8pt;
 }
 
 #squareGreenO {
@@ -69,27 +66,19 @@
   color: rgb(255, 255, 255);
   padding: 0;
   font-size: 2px;
-  margin: -1px;
-  height: 12px;
+  margin: -0px;
+  height: 8px;
   text-align: center;
-  width: 6px;
-  line-height: 2pt;
-}
-
-#squareGreenT {
-  border: solid;
-  background-color: rgb(229, 255, 0);
-  color: rgb(15, 15, 15);
-  padding: 0;
-  font-size: 2px;
-  margin: -1px;
-  height: 100px;
-  text-align: center;
-  width: 100px;
+  width: 4px;
+  line-height: 8pt;
 }
 
 .App {
   text-align: center;
+}
+
+div {
+  max-height: 8px;
 }
 
 .App-header {
