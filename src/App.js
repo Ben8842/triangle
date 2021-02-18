@@ -11,21 +11,28 @@ class Building extends Component {
   }
 
   builderOrigin() {
-    console.log("hello origin");
-    var interval = setInterval(this.countIncrement.bind(this), 250);
+    // console.log("hello origin");
+    var interval = setInterval(this.countIncrement.bind(this), 100);
     this.setState({ interval: interval });
   }
 
   countIncrement() {
     var { triangle, specialCount } = this.state;
+    const viewSize = this.props.sizeValue;
     this.setState({
       specialCount: this.state.specialCount + 1,
     });
-    console.log(specialCount);
+    //console.log(specialCount);
     this.forceUpdate();
-    if (this.state.specialCount > this.state.viewSize + 1) {
+    if (this.state.specialCount > viewSize) {
       clearInterval(this.state.interval);
     }
+  }
+
+  displayPascal(x, y, dif) {
+    var { triangle } = this.state;
+    //console.log(triangle[y][x - dif]);
+    console.log("hello");
   }
 
   triangleBuilder() {
@@ -61,13 +68,15 @@ class Building extends Component {
     }
 
     var index = 1;
-    while (index < viewSize) {
-      console.log(triangle[index - 1]);
+    //I think this should be -2 below due to that fact that we
+    //hard coded the first and second rows.
+    while (index < viewSize - 2) {
+      //   console.log(triangle[index - 1]);
       triangle.push(newRowEven(triangle[index - 1]));
 
       index++;
     }
-    console.log(triangle);
+    //console.log(triangle);
   }
 
   renderSquare(x, y) {
@@ -78,20 +87,49 @@ class Building extends Component {
     var { triangle } = this.state;
     var width = triangle[y].length;
     if (y % 2 == 0) {
-      var dif = Math.floor((this.props.sizeValue + 8 - width) / 2);
-    } else var dif = Math.floor((this.props.sizeValue + 8 - width) / 2) - 1;
+      var dif = Math.floor((this.props.sizeValue - width) / 2);
+    } else var dif = Math.floor((this.props.sizeValue - width) / 2) - 1;
 
     if (x > dif - 1) {
       if (triangle[y][x - dif] % 2 == 0) {
-        return <button id="squareGreen" codeX={x} codeY={y}></button>;
+        return (
+          <button
+            id="squareGreen"
+            codeX={x}
+            codeY={y}
+            onClick={() => this.displayPascal(x, y, dif)}
+          ></button>
+        );
       } else if (triangle[y][x - dif] % 2 == 1)
-        return <button id="squareBlue" codeX={x} codeY={y}></button>;
-    } else return <button id="squareEmpty" codeX={x} codeY={y}></button>;
+        return (
+          <button
+            id="squareBlue"
+            codeX={x}
+            codeY={y}
+            onClick={() => this.displayPascal(x, y, dif)}
+          ></button>
+        );
+    } else
+      return (
+        <button
+          id="squareEmpty"
+          codeX={x}
+          codeY={y}
+          onClick={() => this.displayPascal(x, y, dif)}
+        ></button>
+      );
   }
 
   renderGreenO(x, y, triangleItem) {
     var { triangle } = this.state;
-    return <button id="squareGreenO" codeX={x} codeY={y}></button>;
+    return (
+      <button
+        id="squareGreenO"
+        codeX={x}
+        codeY={y}
+        onClick={() => this.displayPascal(x, y)}
+      ></button>
+    );
   }
 
   renderGreenT(x, y, triangle) {
@@ -104,12 +142,14 @@ class Building extends Component {
     const elementZ = [];
     const viewSize = this.props.sizeValue;
 
-    console.log(this.triangleBuilder());
+    this.triangleBuilder();
 
     var x;
     var y;
 
-    for (y = 0; y < specialCount; y++) {
+    // - 3 on the special count helps line up (and not print too far down)
+    //this is due to the hardcoded row one and two
+    for (y = 0; y < specialCount - 3; y++) {
       for (x = 0; x < viewSize; x++) {
         if (y % 2 == 0 && x == 0) {
           elementS.push(<span>{this.renderGreenO(x, y, triangle[y][x])}</span>);
@@ -131,10 +171,13 @@ class Building extends Component {
     }
     return (
       <div className="entireThing">
+        {" "}
+        <div class="things">{specialCount}</div>
         <div>
           <button id="greatButton" onClick={() => this.builderOrigin()}>
             BUILD PASCAL/PINSKI TRIANGLE
           </button>
+
           <span>
             {elementZ.map((value, index) => {
               return <span key={index}>{value}</span>;
@@ -150,7 +193,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 70,
+      count: 58,
     };
   }
   enterCount() {
@@ -162,11 +205,24 @@ class App extends Component {
   }
 
   render() {
-    var { count } = this.state;
+    var { count, specialCount } = this.state;
 
-    const inputBox = (
+    const inputBox = <div class="counting">{specialCount}</div>;
+    return (
       <div>
-        <form>
+        {inputBox}
+        <br></br>
+        <div className="HeaderSpot">{inputBox}</div>
+        <Building sizeValue={count} />
+      </div>
+    );
+  }
+}
+
+export default App;
+
+/*
+<form>
           <input type="number" class="button" id="sizeHere"></input>
           <button
             type="button"
@@ -177,15 +233,5 @@ class App extends Component {
           </button>
           10 PRINT CHR$ (205.5 + RND (1)); : GOTO 10
         </form>
-      </div>
-    );
-    return (
-      <div>
-        <div className="HeaderSpot">{inputBox}</div>
-        <Building sizeValue={count} />
-      </div>
-    );
-  }
-}
 
-export default App;
+        */

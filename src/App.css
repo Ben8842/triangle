@@ -81,6 +81,9 @@ div {
   max-height: 8px;
 }
 
+.counting {
+  color: black;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -94,6 +97,11 @@ div {
 
 .App-link {
   color: #61dafb;
+}
+
+.things {
+  text-align: left;
+  margin: 40px;
 }
 
 @keyframes App-logo-spin {
