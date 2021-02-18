@@ -172,17 +172,18 @@ class Building extends Component {
     return (
       <div className="entireThing">
         {" "}
-        <div class="things">{specialCount}</div>
-        <div>
+        <div class="things">
           <button id="greatButton" onClick={() => this.builderOrigin()}>
             BUILD PASCAL/PINSKI TRIANGLE
           </button>
-
-          <span>
-            {elementZ.map((value, index) => {
-              return <span key={index}>{value}</span>;
-            })}
-          </span>
+          <div>{specialCount}</div>
+          <div>
+            <span>
+              {elementZ.map((value, index) => {
+                return <span key={index}>{value}</span>;
+              })}
+            </span>
+          </div>
         </div>
       </div>
     );
@@ -210,9 +211,6 @@ class App extends Component {
     const inputBox = <div class="counting">{specialCount}</div>;
     return (
       <div>
-        {inputBox}
-        <br></br>
-        <div className="HeaderSpot">{inputBox}</div>
         <Building sizeValue={count} />
       </div>
     );
@@ -221,7 +219,7 @@ class App extends Component {
 
 export default App;
 
-/*
+/*<div className="HeaderSpot">{inputBox}</div>
 <form>
           <input type="number" class="button" id="sizeHere"></input>
           <button
