@@ -9,7 +9,7 @@ class Building extends Component {
     super(props);
     this.state = {
       triangle: [],
-      specialCount: 2,
+      specialCount: 0,
       stepz: 0,
     };
   }
@@ -23,12 +23,13 @@ class Building extends Component {
   countIncrement() {
     var { triangle, specialCount } = this.state;
     const viewSize = this.props.sizeValue;
+
     this.setState({
       specialCount: this.state.specialCount + 1,
     });
     //console.log(specialCount);
     this.forceUpdate();
-    if (this.state.specialCount > viewSize) {
+    if (this.state.specialCount >= viewSize) {
       clearInterval(this.state.interval);
     }
   }
@@ -36,13 +37,13 @@ class Building extends Component {
   displayPascal(x, y, dif) {
     var { triangle } = this.state;
     //console.log(triangle[y][x - dif]);
-    console.log("hello");
+
     console.log(triangle[y][x - dif]);
   }
 
   triangleBuilder() {
     var { triangle } = this.state;
-    console.log(triangle);
+    //console.log(triangle);
     const viewSize = this.props.sizeValue;
     var triangleRow = [];
     var i = null;
@@ -184,8 +185,8 @@ class Building extends Component {
 
     const entireThingz = (
       <div>
-        <button id="greatButton" onClick={() => this.builderOrigin()}>
-          BUILD PASCAL/PINSKI TRIANGLE
+        <button id="largebutton" onClick={() => this.builderOrigin()}>
+          Build the Triangle
         </button>
         <div className="things">{specialCount}</div>
         <div>
