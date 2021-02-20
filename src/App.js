@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import "./App.css";
 
+var firstimg = require("./imgfolder/pascalcalculation.png").default;
+var secondimg = require("./imgfolder/squares.png").default;
+
 class Building extends Component {
   constructor(props) {
     super(props);
     this.state = {
       triangle: [],
       specialCount: 2,
+      stepz: 0,
     };
   }
 
@@ -33,10 +37,12 @@ class Building extends Component {
     var { triangle } = this.state;
     //console.log(triangle[y][x - dif]);
     console.log("hello");
+    console.log(triangle[y][x - dif]);
   }
 
   triangleBuilder() {
     var { triangle } = this.state;
+    console.log(triangle);
     const viewSize = this.props.sizeValue;
     var triangleRow = [];
     var i = null;
@@ -45,14 +51,9 @@ class Building extends Component {
     triangleRow.push(1);
     triangle.push(triangleRow);
 
-    //triangleRow.push(1);
-    //triangle.push(triangleRow);
-
-    function newRowEven(prevRow) {
+    function newRow(prevRow) {
       var j = 0;
       var newRows = [];
-      //newRows.push(1);
-      // console.log(newRows.size);
 
       for (j = 0; j <= prevRow.length; j++) {
         if (j == 0) {
@@ -63,7 +64,7 @@ class Building extends Component {
           newRows.push(prevRow[j - 1]);
         }
       }
-      // console.log(newRows);
+
       return newRows;
     }
 
@@ -71,8 +72,7 @@ class Building extends Component {
     //I think this should be -2 below due to that fact that we
     //hard coded the first and second rows.
     while (index < viewSize - 2) {
-      //   console.log(triangle[index - 1]);
-      triangle.push(newRowEven(triangle[index - 1]));
+      triangle.push(newRow(triangle[index - 1]));
 
       index++;
     }
@@ -136,8 +136,20 @@ class Building extends Component {
     return <button id="squareGreenT" codeX={x} codeY={y} value="1"></button>;
   }
 
+  nextExplanation() {
+    this.setState((state) => {
+      return { stepz: this.state.stepz + 1 };
+    });
+  }
+
+  skipExplanation() {
+    this.setState((state) => {
+      return { stepz: 5 };
+    });
+  }
+
   render() {
-    var { triangle, specialCount } = this.state;
+    var { triangle, specialCount, stepz } = this.state;
     const elementS = [];
     const elementZ = [];
     const viewSize = this.props.sizeValue;
@@ -169,23 +181,121 @@ class Building extends Component {
         elementS.pop();
       }
     }
-    return (
-      <div className="entireThing">
-        {" "}
-        <div class="things">
-          <button id="greatButton" onClick={() => this.builderOrigin()}>
-            BUILD PASCAL/PINSKI TRIANGLE
-          </button>
-          <div>{specialCount}</div>
-          <div>
-            <span>
-              {elementZ.map((value, index) => {
-                return <span key={index}>{value}</span>;
-              })}
-            </span>
-          </div>
+
+    const entireThingz = (
+      <div>
+        <button id="greatButton" onClick={() => this.builderOrigin()}>
+          BUILD PASCAL/PINSKI TRIANGLE
+        </button>
+        <div className="things">{specialCount}</div>
+        <div>
+          <span>
+            {elementZ.map((value, index) => {
+              return <span key={index}>{value}</span>;
+            })}
+          </span>
         </div>
       </div>
+    );
+
+    const explanationZero = (
+      <p id="explanation">
+        <p>
+          <p>Welcome to Sierpinki triangle!</p>
+          <p>
+            I challenged myself to build a version of Sierpinski's triangle in
+            React that uses the calculation of Pascal's triangle to dictate its
+            formation
+          </p>
+          In mathematics, Pascal's triangle determines the coefficients which
+          arise in binomial expansions.
+        </p>
+        <button id="largebutton" onClick={() => this.nextExplanation()}>
+          Next
+        </button>
+        <button id="largebutton" onClick={() => this.skipExplanation()}>
+          Skip
+        </button>
+      </p>
+    );
+
+    const explanationOne = (
+      <p id="explanation">
+        <p>
+          My algorithm first calculates Pascal's triangle up to row 'x' using a
+          strategy such as:
+        </p>
+        <img src={firstimg} alt="mystery"></img>
+        <button id="largebutton" onClick={() => this.nextExplanation()}>
+          Next
+        </button>
+        <button id="largebutton" onClick={() => this.skipExplanation()}>
+          Skip
+        </button>
+      </p>
+    );
+
+    const explanationTwo = (
+      <p id="explanation">
+        <p>
+          The triangle is calculated up to a given size (nth row).
+          <p>
+            My algorithm starts to build the triangle with blue and green
+            squares. Green squares are used when the Pascal calculation is
+            'even'. Blue squares are used when the Pascal calculation is an
+            'odd' number.
+          </p>
+          <p></p>
+        </p>
+        <button id="largebutton" onClick={() => this.nextExplanation()}>
+          Next
+        </button>
+        <button id="largebutton" onClick={() => this.skipExplanation()}>
+          Skip
+        </button>
+      </p>
+    );
+
+    const explanationThree = (
+      <p id="explanation">
+        <p id="imgcenter">
+          <img id="imgcenter" src={secondimg} alt="mystery"></img>
+          This is how the algorithm calculates where the green, blue and 'empty'
+          squares need to be rendered.
+        </p>
+        <button id="largebutton" onClick={() => this.nextExplanation()}>
+          Next
+        </button>
+        <button id="largebutton" onClick={() => this.skipExplanation()}>
+          Skip
+        </button>
+      </p>
+    );
+
+    const explanationFour = (
+      <p id="explanation">
+        <p>
+          Sierpinski's triangle is a 'fractal'. Pascal's triangle is used in
+          Algebra, Number Theory, Probabilty and Combinatorics. Click next to
+          see the triangle get built row by row in real-time.
+        </p>
+        <button id="largebutton" onClick={() => this.nextExplanation()}>
+          Next
+        </button>
+        <button id="largebutton" onClick={() => this.skipExplanation()}>
+          Skip
+        </button>
+      </p>
+    );
+    return (
+      <p className="entireThing">
+        {stepz == 0 ? explanationZero : null}
+        {stepz == 1 ? explanationOne : null}
+        {stepz == 2 ? explanationTwo : null}
+        {stepz == 3 ? explanationThree : null}
+        {stepz == 4 ? explanationFour : null}
+        {stepz == 5 ? entireThingz : null}
+      </p>
     );
   }
 }
@@ -194,7 +304,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 58,
+      count: 60,
     };
   }
   enterCount() {
