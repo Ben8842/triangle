@@ -149,6 +149,12 @@ class Building extends Component {
     });
   }
 
+  prevExplanation() {
+    this.setState((state) => {
+      return { stepz: this.state.stepz - 1 };
+    });
+  }
+
   render() {
     var { triangle, specialCount, stepz } = this.state;
     const elementS = [];
@@ -201,46 +207,59 @@ class Building extends Component {
 
     const explanationZero = (
       <p id="explanation">
-        <p>
+        <button id="largebutton" onClick={() => this.nextExplanation()}>
+          Next
+        </button>
+        <button id="largebutton" onClick={() => this.skipExplanation()}>
+          Skip
+        </button>
+        <p id="explany">
           <p>Welcome to Sierpinki triangle!</p>
-          <p>
+          <p id="explany">
             I challenged myself to build a version of Sierpinski's triangle in
             React that uses the calculation of Pascal's triangle to dictate its
             formation
           </p>
           In mathematics, Pascal's triangle determines the coefficients which
           arise in binomial expansions.
-        </p>
-        <button id="largebutton" onClick={() => this.nextExplanation()}>
-          Next
-        </button>
-        <button id="largebutton" onClick={() => this.skipExplanation()}>
-          Skip
-        </button>
+        </p>{" "}
       </p>
     );
 
     const explanationOne = (
       <p id="explanation">
-        <p>
-          My algorithm first calculates Pascal's triangle up to row 'x' using a
-          strategy such as:
-        </p>
-        <img src={firstimg} alt="mystery"></img>
+        <button id="largebutton" onClick={() => this.prevExplanation()}>
+          Back
+        </button>
         <button id="largebutton" onClick={() => this.nextExplanation()}>
           Next
         </button>
         <button id="largebutton" onClick={() => this.skipExplanation()}>
           Skip
         </button>
+
+        <p id="explany">
+          My algorithm first calculates Pascal's triangle up to row 'x' using a
+          strategy such as:
+        </p>
+        <img src={firstimg} alt="mystery"></img>
       </p>
     );
 
     const explanationTwo = (
       <p id="explanation">
-        <p>
+        <button id="largebutton" onClick={() => this.prevExplanation()}>
+          Back
+        </button>
+        <button id="largebutton" onClick={() => this.nextExplanation()}>
+          Next
+        </button>
+        <button id="largebutton" onClick={() => this.skipExplanation()}>
+          Skip
+        </button>
+        <p id="explany">
           The triangle is calculated up to a given size (nth row).
-          <p>
+          <p id="explany">
             My algorithm starts to build the triangle with blue and green
             squares. Green squares are used when the Pascal calculation is
             'even'. Blue squares are used when the Pascal calculation is an
@@ -248,44 +267,47 @@ class Building extends Component {
           </p>
           <p></p>
         </p>
-        <button id="largebutton" onClick={() => this.nextExplanation()}>
-          Next
-        </button>
-        <button id="largebutton" onClick={() => this.skipExplanation()}>
-          Skip
-        </button>
       </p>
     );
 
     const explanationThree = (
       <p id="explanation">
-        <p id="imgcenter">
-          <img id="imgcenter" src={secondimg} alt="mystery"></img>
-          This is how the algorithm calculates where the green, blue and 'empty'
-          squares need to be rendered.
-        </p>
+        <button id="largebutton" onClick={() => this.prevExplanation()}>
+          Back
+        </button>
         <button id="largebutton" onClick={() => this.nextExplanation()}>
           Next
         </button>
         <button id="largebutton" onClick={() => this.skipExplanation()}>
           Skip
         </button>
+        <p id="imgcenter">
+          <img id="imgcenter" src={secondimg} alt="mystery"></img>
+          <p id="explany">
+            {" "}
+            This is how the algorithm calculates where the green, blue and
+            'empty' squares need to be rendered.
+          </p>
+        </p>
       </p>
     );
 
     const explanationFour = (
       <p id="explanation">
-        <p>
-          Sierpinski's triangle is a 'fractal'. Pascal's triangle is used in
-          Algebra, Number Theory, Probabilty and Combinatorics. Click next to
-          see the triangle get built row by row in real-time.
-        </p>
+        <button id="largebutton" onClick={() => this.prevExplanation()}>
+          Back
+        </button>
         <button id="largebutton" onClick={() => this.nextExplanation()}>
           Next
         </button>
         <button id="largebutton" onClick={() => this.skipExplanation()}>
           Skip
         </button>
+        <p id="explany">
+          Sierpinski's triangle is a 'fractal'. Pascal's triangle is used in
+          Algebra, Number Theory, Probabilty and Combinatorics. Click next to
+          see the triangle get built row by row in real-time.
+        </p>
       </p>
     );
     return (

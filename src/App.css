@@ -4,6 +4,10 @@
   border: solid;
 }
 
+#explany {
+  margin: 20px;
+}
+
 .button {
   border: none;
   font-weight: bold;
@@ -109,40 +113,33 @@ span {
   font-size: 40px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .entireThing {
-  background-color: red;
+  background-color: rgb(255, 255, 255);
 }
 
 #explanation {
-  font-size: 40px;
+  font-size: 25px;
   text-align: center;
   border-radius: 35px;
   border: solid;
   border-width: 10px;
   color: white;
   background-color: rgb(107, 105, 107);
-  height: 1000px;
-  width: 2000px;
+  height: auto;
+  width: 100%;
   margin: 0 auto;
 }
 
 #largebutton {
-  height: 125px;
-  width: 250px;
-  font-size: 35px;
+  height: 75px;
+  width: 150px;
+  font-size: 20px;
   font-weight: bold;
-  margin: 75px;
+  margin: 15px;
   padding: 10;
-  background-color: rgb(0, 255, 255);
+  color: white;
+  border-radius: 25px;
+  background-color: rgb(54, 54, 54);
 }
 
 img {
@@ -154,7 +151,7 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 65%;
 }
 
 @media only screen and (max-width: 700px) {
@@ -269,17 +266,8 @@ img {
     font-size: 40px;
   }
 
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
   .entireThing {
-    background-color: red;
+    background-color: rgb(253, 252, 252);
   }
 
   #explanation {
@@ -298,12 +286,13 @@ img {
 
   #largebutton {
     height: 25px;
-    width: 200px;
-    font-size: 15px;
+    width: auto;
+    font-size: 12px;
     font-weight: bold;
     margin: 5px;
     padding: 5;
-    background-color: rgb(0, 255, 255);
+    color: white;
+    background-color: rgb(49, 49, 49);
   }
 
   img {
@@ -315,6 +304,10 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 75%;
+  }
+
+  #explany {
+    margin: 20px;
   }
 }
